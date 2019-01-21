@@ -1,0 +1,36 @@
+FROM node:11-alpine
+
+WORKDIR /usr/src/app
+COPY back/package.json .
+
+#to make global the local yarn 
+#RUN export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+#update apk and yarn, install dependencies
+RUN apk update && apk upgrade \
+    && apk add --no-cache --virtual build-dependencies add \
+    curl \
+    bash \
+    python \
+    && curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+
+#    && apk del 
+
+
+# Install globally in container -> we use yarn to avoid a permission headach
+RUN yarn && yarn add loopback-connector-mongodb && yarn global add loopback-cli
+
+#----------------------
+# npm way
+#RUN npm install loopback-connector-mongodb --save
+#RUN npm install --unsafe-perm -g loopback-cli
+
+#----------------------------------------------
+# if you use the package.json from config wich have loopback in the dependencies,
+# just do
+#RUN npm install --silent
+#RUN alias lb='/usr/src/app/node_modules/.bin/lb'
+
+# other packages to take a look
+#nodemon
+# loopback-connector-mysql
