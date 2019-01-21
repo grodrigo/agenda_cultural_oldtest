@@ -1,1 +1,16 @@
-{"db":{"name":"db","connector":"memory"}}
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongodb": {
+        "host": "mongo",
+        "port": 27017,
+        "url": "",
+        "database": "agendaCultural",
+        "password": "",
+        "name": "mongodb",
+        "user": "",
+        "connector": "mongodb"
+    }
+}

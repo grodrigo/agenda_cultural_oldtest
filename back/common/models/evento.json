@@ -1,1 +1,31 @@
-{"name":"evento","plural":"eventos","base":"PersistedModel","idInjection":true,"options":{"validateUpsert":true},"properties":{"descripcion":{"type":"string"}},"validations":[],"relations":{},"acls":[],"methods":{}}
+{
+    "name": "evento",
+    "plural": "eventos",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "descripcion": {
+            "type": "string",
+            "required": true
+        },
+        "fecha": {
+            "type": "date"
+        },
+        "lugar": {
+            "type": "string"
+        },
+        "direccion": {
+            "type": "geopoint"
+        },
+        "foto": {
+            "type": "string"
+        }
+    },
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": {}
+}
