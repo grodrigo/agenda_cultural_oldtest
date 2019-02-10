@@ -19,11 +19,10 @@ class AddEvento extends Component {
 
     handleInputChange(event) {
         const target = event.target;
-        //console.log(target.value);
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.value;
         const name = target.name;
-        
-    
+
+
         this.setState({
           [name]: value
         });
@@ -49,17 +48,17 @@ class AddEvento extends Component {
                 <h1>Agregar Evento</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                        <input type="text" name="descripcion" value={this.state.descripcion} 
+                        <input type="text" name="descripcion" value={this.state.descripcion}
                             onChange={this.handleInputChange.bind(this)}/>
                             <label htmlFor="descripcion">Descripción</label>
                     </div>
                     <div className="input-field">
-                        <input type="date" name="fecha"  value={this.state.fecha} 
+                        <input type="date" name="fecha"  value={this.state.fecha}
                             onChange={this.handleInputChange.bind(this)} />
                         <label htmlFor="date">Fecha</label>
                     </div>
                     <div className="input-field">
-                        <input type="text" name="lugar"  value={this.state.lugar} 
+                        <input type="text" name="lugar"  value={this.state.lugar}
                             onChange={this.handleInputChange.bind(this)} />
                         <label htmlFor="place">Lugar</label>
                     </div>

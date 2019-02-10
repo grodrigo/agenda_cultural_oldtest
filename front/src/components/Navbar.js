@@ -1,28 +1,35 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
 class Navbar extends Component{
     render(){
         return (
-            <div>
-                <nav className="blue darken-3">
-                    <div className="nav-wrapper">
-                        <a href="/" className="brand-logo">Agenda Cultural</a>
-                        <div data-target="main-menu" className="sidenav-trigger waves-effect waves-light">
-                            <i className="fa fa-bars"></i>
-                        </div>
-                        <ul className="right hide-on-med-and-down">
-                            <li><Link to="/"><i className="fa fa-users"></i>Eventos</Link></li>
-                            <li><Link to="/eventos/add"><i className="fa fa-plus"></i>Agregar Evento</Link></li>
-                            <li><Link to="/About"><i className="fa fa-question-circle"></i>About</Link></li>
-                        </ul>
-                    </div>
-                </nav>
-                <ul className="sidenav" id="main-menu">
-                    <li><Link to="/"><i className="fa fa-users"></i>Eventos</Link></li>
-                    <li><Link to="/eventos/add"><i className="fa fa-plus"></i>Agregar Evento</Link></li>
-                    <li><Link to="/About"><i className="fa fa-question-circle"></i>About</Link></li>
-                </ul>
+            <div className="navbar-container"   >
+                <AppBar position="static">
+                    <Toolbar className="nav-wrapper">
+                        <IconButton className="navbar-icon" color="inherit" aria-label="Menu">
+                          <Typography variant="h4" color="inherit" className="navbar-logo">
+                            Agenda Cultural
+                          </Typography>
+                        </IconButton>
+                        <Button component={Link} to="/">
+                          Eventos
+                        </Button>
+                        <Button component={Link} to="/eventos/add">
+                          Agregar Evento
+                        </Button>
+                        <Button component={Link} to="/about">
+                          About
+                        </Button>
+                    </Toolbar>
+                </AppBar>
             </div>
         )
     }
