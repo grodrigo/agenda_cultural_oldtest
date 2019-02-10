@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 class EditEvento extends Component{
+
   constructor(props){
     super(props);
     this.state = {
@@ -26,10 +27,10 @@ class EditEvento extends Component{
       this.setState({
         id: response.data.id,
         descripcion: response.data.descripcion,
-        fecha: response.data.fecha,
+        fecha: response.data.fecha.substr(0, 10),
         lugar: response.data.lugar
       }, () => {
-        console.log(this.state);
+//        console.log(this.state); // onLoad
       });
     })
     .catch(err => console.log(err));
@@ -57,7 +58,7 @@ class EditEvento extends Component{
 
   handleInputChange(e){
     const target = e.target;
-    const value = target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -73,16 +74,16 @@ class EditEvento extends Component{
        <h1>Editar Evento</h1>
        <form onSubmit={this.onSubmit.bind(this)}>
           <div className="input-field">
-            <input type="text" name="descripcion" ref="descripcion" value={this.state.descripcion} onChange={this.handleInputChange} />
-            <label htmlFor="descripcion">Descripci?n</label>
+            <label htmlFor="descripcion">Descripción</label>
+            <input type="text" name="descripcion" ref="descripcion" value={this.state.descripcion} onChange={this.handleInputChange.bind(this)} />
           </div>
           <div className="input-field">
-            <input type="date" name="fecha" ref="fecha" onChange={this.handleInputChange} />
             <label htmlFor="fecha">Fecha</label>
+            <input type="date" name="fecha" ref="fecha" value={this.state.fecha} onChange={this.handleInputChange.bind(this)} />
           </div>
           <div className="input-field">
-            <input type="text" name="lugar" ref="lugar" value={this.state.lugar} onChange={this.handleInputChange} />
             <label htmlFor="lugar">Lugar</label>
+            <input type="text" name="lugar" ref="lugar" value={this.state.lugar} onChange={this.handleInputChange.bind(this)} />
           </div>
           <input type="submit" value="Save" className="btn" />
         </form>
