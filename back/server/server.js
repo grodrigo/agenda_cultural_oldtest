@@ -5,6 +5,22 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+//app.use(jwtCheck);
+
+//app.get('/api/eventos', function (req, res) {
+//  res.send('Secured Resource');
+//});
+
+
+// catch error
+app.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send('Invalid token, or no token supplied!');
+    } else {
+        res.status(401).send(err);
+    }
+});
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
