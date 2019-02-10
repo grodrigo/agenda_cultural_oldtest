@@ -8,20 +8,20 @@ class Navbar extends Component{
                 <nav className="blue darken-3">
                     <div className="nav-wrapper">
                         <a href="/" className="brand-logo">Agenda Cultural</a>
-                        <a href="#" data-target="main-menu" className="sidenav-trigger">
+                        <div data-target="main-menu" className="sidenav-trigger waves-effect waves-light">
                             <i className="fa fa-bars"></i>
-                        </a>
+                        </div>
                         <ul className="right hide-on-med-and-down">
                             <li><Link to="/"><i className="fa fa-users"></i>Eventos</Link></li>
                             <li><Link to="/eventos/add"><i className="fa fa-plus"></i>Agregar Evento</Link></li>
-                            <li><Link to="/About"><i className="fa fa-users"></i>About</Link></li>
+                            <li><Link to="/About"><i className="fa fa-question-circle"></i>About</Link></li>
                         </ul>
                     </div>
                 </nav>
                 <ul className="sidenav" id="main-menu">
                     <li><Link to="/"><i className="fa fa-users"></i>Eventos</Link></li>
                     <li><Link to="/eventos/add"><i className="fa fa-plus"></i>Agregar Evento</Link></li>
-                    <li><Link to="/About"><i className="fa fa-users"></i>About</Link></li>
+                    <li><Link to="/About"><i className="fa fa-question-circle"></i>About</Link></li>
                 </ul>
             </div>
         )
