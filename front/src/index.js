@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-//import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+import Auth from './components/Auth/Auth';
+import App from './App';
+
+const auth = new Auth();
 
 ReactDOM.render(
 <BrowserRouter>
-    <App />
+    <App auth={auth}/>
 </BrowserRouter>
 , document.getElementById('root'));
 
