@@ -1,9 +1,14 @@
 import React from 'react';
 import Main from './components/Main';
 import Navbar from './components/Navbar';
-import LateralBar from './components/Lateralbar';
+import Sidebar from './components/Sidebar';
+
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+
+import $ from 'jquery';
+import 'materialize-css';
+import 'materialize-css/dist/css/materialize.min.css';
 
 const App = () => (
   <div>
@@ -11,7 +16,7 @@ const App = () => (
     <div className="container">
       <Grid container spacing={8}>
         <Grid item xs={1}>
-          <LateralBar />
+          <Sidebar />
         </Grid>
         <Grid item xs={4}>
           <Main />
