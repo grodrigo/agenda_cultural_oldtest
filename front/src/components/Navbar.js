@@ -12,24 +12,16 @@ class Navbar extends Component{
     render(){
         return (
             <div className="navbar-container"   >
-                <AppBar position="static">
-                    <Toolbar className="nav-wrapper">
-                        <IconButton className="navbar-icon" color="inherit" aria-label="Menu">
-                          <Typography variant="h4" color="inherit" className="navbar-logo">
-                            Agenda Cultural
-                          </Typography>
-                        </IconButton>
-                        <Button component={Link} to="/">
-                          Eventos
-                        </Button>
-                        <Button component={Link} to="/eventos/add">
-                          Agregar Evento
-                        </Button>
-                        <Button component={Link} to="/about">
-                          About
-                        </Button>
-                    </Toolbar>
-                </AppBar>
+              <nav>
+                <div className="nav-wrapper">
+                  <a href="#" className="brand-logo">Logo</a>
+                  <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li><Link to={'/eventos/add'}>Agregar</Link></li>
+                    <li><Link to={'/eventos'}>Home</Link></li>
+                    <li><Link to={'/about'}>About</Link></li>
+                  </ul>
+                </div>
+              </nav>
             </div>
         )
     }
