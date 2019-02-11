@@ -8,23 +8,48 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-class Navbar extends Component{
-    render(){
-        return (
-            <div className="navbar-container"   >
-              <nav>
-                <div className="nav-wrapper">
-                  <a href="#" className="brand-logo">Logo</a>
-                  <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><Link to={'/eventos/add'}>Agregar</Link></li>
-                    <li><Link to={'/eventos'}>Home</Link></li>
-                    <li><Link to={'/about'}>About</Link></li>
-                  </ul>
-                </div>
-              </nav>
+class Navbar extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    const { isAuthenticated } = this.props.isAuthenticated;
+    return (
+        <div className="navbar-container"   >
+          <nav>
+            <div className="nav-wrapper">
+              <a href="/" className="brand-logo">Agenda Cultural</a>
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li><Link to={'/eventos/add'}>Agregar</Link></li>
+                <li><Link to={'/eventos'}>Inicio</Link></li>
+                <li><Link to={'/about'}>Acerca de...</Link></li>
+
+                <li>{
+                  !isAuthenticated() && (
+                      <Button
+                        onClick={this.login.bind(this)}
+                      >
+                        Log In
+                      </Button>
+                    )
+                }
+                {
+                  isAuthenticated() && (
+                      <Button
+                        onClick={this.logout.bind(this)}
+                      >
+                        Log Out
+                      </Button>
+                    )
+                }</li>
+
+              </ul>
             </div>
-        )
-    }
+          </nav>
+        </div>
+      )
+  }
 }
 
 export default Navbar;

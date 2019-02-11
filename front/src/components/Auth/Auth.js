@@ -15,14 +15,6 @@ export default class Auth {
     scope: 'openid'
   });
 
-  // auth0 = new auth0.WebAuth({
-  //   domain: AUTH_CONFIG.domain,
-  //   clientID: AUTH_CONFIG.clientId,
-  //   redirectUri: AUTH_CONFIG.callbackUrl,
-  //   responseType: 'token id_token',
-  //   scope: 'openid'
-  // });
-
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -42,7 +34,7 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        history.replace('/home');
+        history.replace('/');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -68,7 +60,7 @@ export default class Auth {
     this.expiresAt = expiresAt;
 
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   renewSession() {
@@ -93,7 +85,7 @@ export default class Auth {
     localStorage.removeItem('isLoggedIn');
 
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   isAuthenticated() {
