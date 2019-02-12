@@ -21,7 +21,7 @@ class EditEvento extends Component{
 
   getEventoDetails(){
     let eventoId = this.props.match.params.id;
-    axios.get(`http://localhost:3000/api/eventos/${eventoId}`)
+    axios.get(`http://localhost:3001/api/eventos/${eventoId}`)
     .then(response => {
       this.setState({
         id: response.data.id,
@@ -38,7 +38,7 @@ class EditEvento extends Component{
   EditEvento(newEvento){
     axios.request({
       method:'put',
-      url:`http://localhost:3000/api/eventos/${this.state.id}`,
+      url:`http://localhost:3001/api/eventos/${this.state.id}`,
       data: newEvento
     }).then(response => {
       this.props.history.push('/');

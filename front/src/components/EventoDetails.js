@@ -15,7 +15,7 @@ class EventoDetails extends Component {
     }
     getEvento() {
         let eventoId = this.props.match.params.id;
-                axios.get(`http://localhost:3000/api/eventos/${eventoId}`)
+                axios.get(`http://localhost:3001/api/eventos/${eventoId}`)
             .then(response => {
                 //console.log(response.data);
                 this.setState({ details: response.data }, () => {
@@ -27,7 +27,7 @@ class EventoDetails extends Component {
 
     onDelete(){
         let eventoId = this.state.details.id;
-        axios.delete(`http://localhost:3000/api/eventos/${eventoId}`)
+        axios.delete(`http://localhost:3001/api/eventos/${eventoId}`)
         .then(response =>  {
             this.props.history.push('/');
         }).catch(error => console.log(error));

@@ -33,7 +33,7 @@ class AddEvento extends Component {
         //alert(this.state.descripcion);
         axios.request({
             method: 'post',
-            url: 'http://localhost:3000/api/eventos',
+            url: 'http://localhost:3001/api/eventos',
             data: this.state
         }).then(response => {
             this.props.history.push('/');

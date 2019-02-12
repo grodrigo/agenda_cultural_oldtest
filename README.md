@@ -57,7 +57,7 @@ chown node:node -R .
 yarn start
 ```
 
-> look at localhost:3000
+> look at localhost:3001
 
 
 ************

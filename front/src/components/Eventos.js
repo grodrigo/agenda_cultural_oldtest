@@ -12,7 +12,7 @@ class Eventos extends Component{
     
     getEventos(){
         //promise then an arrow function
-        axios.get('http://localhost:3000/api/eventos')
+        axios.get('http://localhost:3001/api/eventos')
         .then(response => {
 //            console.log(response.data);
             this.setState({eventos: response.data}, () =>
