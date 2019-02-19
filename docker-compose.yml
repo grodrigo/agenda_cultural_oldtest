@@ -11,7 +11,7 @@ services:
       - './front:/usr/src/app'
       - '/usr/src/app/node_modules'
     ports:
-      - '3001:3000'
+      - '3000:3000'
     command: sh -c "sleep 5; yarn start"
 
   back:
@@ -26,7 +26,7 @@ services:
       - './back:/usr/src/app'
       - '/usr/src/app/node_modules'
     ports:
-      - '3000:3000'
+      - '3001:3000'
 #    command: sh -c "yarn start"
 #    command: sh -c "sleep 5; node ."
     command: sh -c "sleep 5; yarn start"

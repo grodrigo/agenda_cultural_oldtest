@@ -7,9 +7,11 @@ class AddEvento extends Component {
     constructor(props){
         super(props);
         this.state = {
+            titulo: "",
             descripcion: "",
             fecha: "",
-            lugar: ""
+            lugar: "",
+            imagen: "",
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -49,6 +51,11 @@ class AddEvento extends Component {
                 <h1>Agregar Evento</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
+                        <input type="text" name="titulo" value={this.state.titulo} 
+                            onChange={this.handleInputChange.bind(this)}/>
+                            <label htmlFor="titulo">Titulo</label>
+                    </div>
+                    <div className="input-field">
                         <input type="text" name="descripcion" value={this.state.descripcion} 
                             onChange={this.handleInputChange.bind(this)}/>
                             <label htmlFor="descripcion">Descripción</label>
@@ -62,6 +69,11 @@ class AddEvento extends Component {
                         <input type="text" name="lugar"  value={this.state.lugar} 
                             onChange={this.handleInputChange.bind(this)} />
                         <label htmlFor="place">Lugar</label>
+                    </div>
+                    <div className="input-field">
+                        <input type="text" name="imagen"  value={this.state.imagen} 
+                            onChange={this.handleInputChange.bind(this)} />
+                        <label htmlFor="place">Imagen (URL)</label>
                     </div>
                     <input type="submit" value="Guardar" className="btn" />
                 </form>

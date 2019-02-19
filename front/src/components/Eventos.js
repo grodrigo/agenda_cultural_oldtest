@@ -16,34 +16,32 @@ class Eventos extends Component{
         .then(response => {
 //            console.log(response.data);
             this.setState({eventos: response.data}, () =>
-            {
-                //console.log(this.state);
-            })
+            {})
         })
         .catch(error => console.log(error));
     }
 
     //called before mount and render component
     componentWillMount(){
-        //console.log(123);
         this.getEventos();
     }
+
     render(){
-        const eventoItems = this.state.eventos.map((evento, i) => {
+            const eventoItems = this.state.eventos.map((evento, i) => {
             return(
-                // <li className="collection-item">{evento.descripcion}</li>
-                <EventoItem key={evento.id} item={evento} />
+                    <EventoItem key={evento.id} item={evento} />
+                )
+            })
+            return (
+                <div>
+                    <h1>Eventos</h1>
+                    <div className="row">
+                        {eventoItems}
+                    </div>
+                </div>
             )
-        })
-        return (
-            <div>
-                <h1>Eventos</h1>
-                <ul className="collection">
-                    {eventoItems}
-                </ul>
-            </div>
-        )
-    }
+        }
+
 }
 
 export default Eventos;

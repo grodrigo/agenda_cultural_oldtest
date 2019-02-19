@@ -6,7 +6,7 @@ class EventoDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            details: ''
+            item: ''
         }
     }
 
@@ -18,15 +18,15 @@ class EventoDetails extends Component {
                 axios.get(`http://localhost:3001/api/eventos/${eventoId}`)
             .then(response => {
                 //console.log(response.data);
-                this.setState({ details: response.data }, () => {
-                    //                console.log(this.state);
+                this.setState({ item: response.data }, () => {
+                                    console.log(this.state);
                 })
             })
             .catch(error => console.log(error));
     }
 
     onDelete(){
-        let eventoId = this.state.details.id;
+        let eventoId = this.state.item.id;
         axios.delete(`http://localhost:3001/api/eventos/${eventoId}`)
         .then(response =>  {
             this.props.history.push('/');
@@ -38,14 +38,16 @@ class EventoDetails extends Component {
         return (
             <div>
                 <Link className="btn grey" to="/">Back</Link>
-                <h1>{this.state.details.descripcion}</h1>
+                <h1>{this.state.item.titulo}</h1>
+                <img src={this.state.item.imagen}/>
+                <p>{this.state.item.descripcion}</p>
                 <ul className="collection">
                     <li className="collection-item">Fecha: {
-                        (new Date(this.state.details.fecha)).toLocaleDateString('es-AR', DATE_OPTIONS)}
+                        (new Date(this.state.item.fecha)).toLocaleDateString('es-AR', DATE_OPTIONS)}
                     </li>
-                    <li className="collection-item">Lugar:{this.state.details.lugar}</li>
+                    <li className="collection-item">Lugar:{this.state.item.lugar}</li>
                 </ul>
-                <Link className="btn" to={`/eventos/edit/${this.state.details.id}`}>Editar</Link>
+                <Link className="btn" to={`/eventos/edit/${this.state.item.id}`}>Editar</Link>
                 <button onClick={this.onDelete.bind(this)} className="btn red right">Borrar</button>
             </div>
         )
