@@ -16,7 +16,7 @@ var jwtCheck = jwt({
       }
       return null;
     },
-    audience: 'localhost:3000',
+    audience: 'agendaCulturalLoopback',
     issuer: "https://dev-test1.auth0.com/",
     algorithms: ['RS256']
 });

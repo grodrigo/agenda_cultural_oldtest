@@ -1,9 +1,11 @@
-FROM node:11-alpine
+FROM node:8.7-alpine
 
-## add required dependencies
-RUN yarn global add create-react-app
+WORKDIR /home/app
 
-WORKDIR /usr/src/app
-COPY package.json .
+ADD package.json /home/app
+RUN npm install
+ADD . /home/app
 
-RUN yarn
+CMD ["npm", "start"]
+
+EXPOSE 3000 3001

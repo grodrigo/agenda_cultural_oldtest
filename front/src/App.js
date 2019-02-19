@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import Main from './components/Main';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
-
-import { Link } from 'react-router-dom';
-import 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
+import { Navbar, Button } from 'react-bootstrap';
+import './App.css';
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
-
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -33,21 +24,97 @@ class App extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, userHasScopes } = this.props.auth;
+
     return (
-        <div>
-          <Navbar isAuthenticated={isAuthenticated} />
-          <div className="container">
-            <Sidebar />
-            <Main />
-          </div>
-          <div className="fixed-action-btn">
-            <Link to="/eventos/add" className="btn-floating btn-large red">
-              <i className="fa fa-plus"></i>
-            </Link>
-          </div>
-        </div>
-      )
+      <div>
+        <Navbar fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Auth0 - React</a>
+            </Navbar.Brand>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'home')}
+            >
+              Home
+            </Button>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'about')}
+            >
+              About
+            </Button>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'eventos')}
+            >
+              Eventos
+            </Button>
+            {
+              !isAuthenticated() && (
+                  <Button
+                    id="qsLoginBtn"
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'profile')}
+                  >
+                    Profile
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'ping')}
+                  >
+                    Ping
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() &&  userHasScopes(['write:messages']) && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this, 'admin')}
+                  >
+                    Admin
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    id="qsLogoutBtn"
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </Button>
+                )
+            }
+          </Navbar.Header>
+        </Navbar>
+      </div>
+    );
   }
 }
 
