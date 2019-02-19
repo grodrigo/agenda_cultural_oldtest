@@ -26,6 +26,12 @@ There are two incomplete branches:
   
 - The dev branch was an intermediate test and it is really dispossable.  
 
+The two branches have diferent front package json, so, an easy workoround is to do:  
+docker exec -it {frontend_container} sh  
+npm install (or yarn, I think I mix it between branches...)  
+
+It doesn't care, in this way the missing package will be installed. Otherwise you'll have to redo the front docker image.
+
 
 ## Run a disposable container to startup a project
 To make an empty project, like the first commit you can start without installing nothing more than docker in your system.  
